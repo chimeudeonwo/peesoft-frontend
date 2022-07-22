@@ -1,0 +1,59 @@
+*{
+  font-family: "sans-serif", sans-serif;
+}
+
+html {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+.by-chip-app {
+  text-align: center;
+  font-size: 20px;
+}
+
+#about-by-chip:hover {
+  cursor:pointer;
+}
+
+.header-section {
+  background-color: whitesmoke;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.logo-section {
+  position: relative;
+  top: 7px;
+  left: 5px;
+  width: 30%;
+}
+
+.align-header-menu {
+  position: relative;
+  bottom: 2px;
+  display: inline-flex;
+  flex: auto;
+  width: 70%;
+  right: -100px;
+}
+
+.format-logo-img {
+  position: relative;
+  top: 10px;
+  left: -100px;
+}
+
+.format-logo-img img {
+  width: 70px;
+  height: 70px;
+}
