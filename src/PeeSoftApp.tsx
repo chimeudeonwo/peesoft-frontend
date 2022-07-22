@@ -27,10 +27,6 @@ function PeeSoftApp() {
           </div>
           <div className={"align-header-menu"}>
               <Header onClick={handlePageNavigation} />
-              {/*<HeaderField id={"servicePage"} name={"servicePage"} buttonName={"Our Services"} onClick={handlePageNavigation} />
-              <HeaderField id={"aboutPage"} name={"aboutPage"} buttonName={"About Us"} onClick={handlePageNavigation} />
-              <HeaderField id={"careerPage"} name={"careerPage"} buttonName={"Career"} onClick={handlePageNavigation} />
-              <HeaderField id={"contactPage"} name={"contactPage"} buttonName={"Contact Us"} onClick={handlePageNavigation} />*/}
           </div>
       </header>
       <div className={"by-chip-home"}>
