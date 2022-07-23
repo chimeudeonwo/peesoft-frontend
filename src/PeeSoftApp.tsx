@@ -17,42 +17,43 @@ function PeeSoftApp() {
     setCurrentPage(target.id);
   }
 
-  console.log('currentState', currentPage);
-
   return (
-    <div className="by-chip-app">
+    <div className="peeSoft-app">
       <header className={"header-section"}>
           <div className={"logo-section"}>
               <LogoField className={"format-logo-img"} label={"PeeSoft"} src={Logo} onClick={() => setCurrentPage('homePage')} />
           </div>
           <div className={"align-header-menu"}>
               <Header onClick={handlePageNavigation} />
+              <span className={"register-login"}>
+                  <a href={"#"}>Register</a> | <a href={"#"}>Login</a>
+              </span>
           </div>
       </header>
-      <div className={"by-chip-home"}>
+      <div>
           {currentPage === "homePage" &&
-              <div>
+              <div className={"peeSoft-homePage"}>
                   <p>Welcome to PeeSoft where everyone is secured!</p>
               </div>
           }
           {currentPage === "servicePage" &&
-              <div>
+              <div className={"peeSoft-servicePage"}>
                   <p>Services we offer!</p>
               </div>
           }
           {currentPage === "careerPage" &&
-              <div>
+              <div className={"peeSoft-careerPage"}>
                   <p>Thank you for wanting to work with PeeSoft</p>
               </div>
           }
           {currentPage === "contactPage" &&
-              <div>
+              <div className={"peeSoft-contactPage"}>
                   <p>Contact us</p>
                   <ContactUs />
               </div>
           }
           {currentPage === "aboutPage" &&
-              <div>
+              <div className={"peeSoft-aboutPage"}>
                   <p>About PeeSoft</p>
                   <AboutPeeSoft />
               </div>
