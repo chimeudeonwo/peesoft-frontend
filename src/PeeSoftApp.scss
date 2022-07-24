@@ -1,5 +1,6 @@
 *{
   font-family: "sans-serif", sans-serif;
+  font-size: 20px;
 }
 
 html {
@@ -15,13 +16,8 @@ html, body {
   height: 100%;
 }
 
-.by-chip-app {
+.peeSoft-app {
   text-align: center;
-  font-size: 20px;
-}
-
-#about-by-chip:hover {
-  cursor:pointer;
 }
 
 .header-section {
@@ -34,8 +30,7 @@ html, body {
 .logo-section {
   position: relative;
   top: 7px;
-  left: 5px;
-  width: 30%;
+  left: -540px;
 }
 
 .align-header-menu {
@@ -43,7 +38,7 @@ html, body {
   bottom: 2px;
   display: inline-flex;
   flex: auto;
-  width: 70%;
+  width: 75%;
   right: -100px;
 }
 
@@ -56,4 +51,14 @@ html, body {
 .format-logo-img img {
   width: 70px;
   height: 70px;
+}
+
+.register-login {
+  position: relative;
+  top: -60px;
+  width: 160px;
+}
+
+.register-login a {
+  color: rgba(198, 161, 161, 0.99);
 }
