@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import './PeeSoftApp.scss';
-import {InputField} from "./components/inputField/InputField";
 import {AboutPeeSoft} from "./pages/aboutPeeSoft/AboutPeeSoft";
 import {ContactUs} from "./pages/contactUs/ContactUs";
 import {SitePages} from "./types/SitePages";
 import {LogoField} from "./modules/logo/LogoField";
 import Logo from "./../src/images/logo.png";
 import {Header} from "./modules/header/Header";
+import {Link} from "react-router-dom";
 
 function PeeSoftApp() {
   const [currentPage, setCurrentPage] = useState<SitePages>("homePage");
@@ -26,7 +26,7 @@ function PeeSoftApp() {
           <div className={"align-header-menu"}>
               <Header onClick={handlePageNavigation} />
               <span className={"register-login"}>
-                  <a href={"#"}>Register</a> | <a href={"#"}>Login</a>
+                  <a href={"/register"} onClick={() => setCurrentPage('user-registration')}>Register</a> | <a href={"/login"}>Login</a>
               </span>
           </div>
       </header>
@@ -59,9 +59,7 @@ function PeeSoftApp() {
               </div>
           }
           {currentPage === "user-registration" &&
-              <div>
-                  <InputField id={"test"} name={"username"} onchange={() => console.log('change has happened to this input')} placeholder={"username"} />
-              </div>
+              <Link to={"register"} />
           }
       </div>
     </div>

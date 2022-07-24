@@ -1,18 +1,24 @@
 import { Outlet, Link } from "react-router-dom";
+import PeeSoftApp from "../../PeeSoftApp";
+import './Layout.scss'
 
 const Layout = () => {
     return (
         <>
+            <PeeSoftApp/>
             <nav>
                 <ul>
                     <li>
-                        <Link to="/">Home</Link>
+                        <Link to="/"></Link>
                     </li>
                     <li>
-                        <Link to="/blogs">Blogs</Link>
+                        <Link to="/register"></Link>
                     </li>
                     <li>
-                        <Link to="/contact">Contact</Link>
+                        <Link to="/login"></Link>
+                    </li>
+                    <li>
+                        <Link to="/services"></Link>
                     </li>
                 </ul>
             </nav>

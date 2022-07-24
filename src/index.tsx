@@ -15,22 +15,23 @@ root.render(
 
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import {ContactUs} from "./pages/contactUs/ContactUs";
-import {AboutPeeSoft} from "./pages/aboutPeeSoft/AboutPeeSoft";
-import ByChipApp from "./PeeSoftApp";
 import reportWebVitals from "./reportWebVitals";
 import NoPage from "./pages/noPage/NoPage";
+import {UserRegister} from "./modules/userRegister/UserRegister";
+import {UserLogin} from "./modules/userLogin/UserLogin";
 import Home from "./pages/home/Home";
-import Layout from "./pages/layout/Layout";
+import PeeSoftApp from "./PeeSoftApp";
 
 export default function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Layout />}>
-                    <Route index element={<Home />} />
-                    <Route path="about" element={<AboutPeeSoft />} />
-                    <Route path="contact" element={<ContactUs />} />
+                <Route path="/" >
+                    <Route index element={<PeeSoftApp />} />
+                    <Route path="home" element={<PeeSoftApp />} />
+                    <Route path="register" element={<UserRegister />} />
+                    <Route path="login" element={<UserLogin />} />
+                    <Route path="services" element={<Home />} />
                     <Route path="*" element={<NoPage />} />
                 </Route>
             </Routes>
@@ -41,7 +42,7 @@ export default function App() {
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
-root.render(<ByChipApp />);
+root.render(<App />);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
