@@ -1,10 +1,16 @@
 import {InputField} from "../../components/inputField/InputField";
-import React from "react";
+import React, {useState} from "react";
 import Logo from "../../images/logo.png";
 import './UserRegister.scss'
 import {Button} from "../../components/button/Button";
 
 export const UserRegister = () => {
+
+    const goBackToHome = () => {
+        // the protocol must be included in the url
+        window.location.href = window.location.protocol + "//" + window.location.host + '/home';
+    }
+
     return (
         <div>
             <header className={"user-register-header-section"}>
@@ -23,7 +29,7 @@ export const UserRegister = () => {
             <p className={"center-tip"}>* are required fields</p>
             <div className={"user-register-buttons-box"}>
                 <Button className={"register-button-submit"} id={"register-button"} onClick={() => console.log('register btn clicked')} type={"submit"} buttonName={"Register"} active={false}/>
-                <Button className={"register-button-back"} id={"register-button-back"} onClick={() => console.log('register btn clicked')} type={"submit"} buttonName={"Back"} active={false}/>
+                <Button className={"register-button-back"} id={"register-button-back"} onClick={goBackToHome} buttonName={"Back"} active={false}/>
             </div>
         </div>
     )
