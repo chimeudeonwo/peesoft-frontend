@@ -84,7 +84,7 @@ export const UserRegister = () => {
             </header>
             <div className={"user-register-container"}>
                 <div>
-                    <InputField register={register} value={userRegisterData.email} id={"email"} name={"Email"} type={"email"} maxLength={50} onChange={handleUserDataForm} placeholder={"Email*"} required={true}/>
+                    <InputField register={register} value={userRegisterData.email} id={"email"} name={"Email"} type={"email"} maxLength={50} onChange={handleUserDataForm} placeholder={"Email*"} required={true} errors={errors}/>
                     <InputField register={register} id={"username"} name={"Username"} type={"username"} maxLength={50} onChange={handleUserDataForm} placeholder={"Username*"} required={true} value={userRegisterData.username}/>
                     <InputField register={register} id={"password"} name={"Password"} type={"password"} maxLength={50} onChange={handleUserDataForm} placeholder={"Password*"} required={true} value={userRegisterData.password}/>
                     <InputField register={register} id={"confirmPassword"} name={"ConfirmPassword"} type={"password"} maxLength={50} onChange={handleUserDataForm} placeholder={"ConfirmPassword*"}required={true} value={userRegisterData.confirmPassword} />
@@ -93,7 +93,7 @@ export const UserRegister = () => {
                     <p style={{color: "red"}}>* are required fields.</p>
                 </div>
                 <div className={"user-register-buttons-box"}>
-                    <Button id={"register-button-back"} onClick={goBackToHome} buttonName={"Back"} active={false}/>
+                    <Button id={"register-button-back"} onClick={goBackToHome} buttonName={"Back"} disabled={false} active={false}/>
                     <Button className={"register-button-submit"} id={"register-button"} onClick={onSubmit} type={"submit"} buttonName={"Register"} disabled={isActive()} active={isActive()}/>
                 </div>
             </div>

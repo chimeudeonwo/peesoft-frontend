@@ -5,5 +5,5 @@ export interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
     name?: string,
     buttonName?: string,
     onClick?: any,
-    active: boolean
+    active?: boolean
 }

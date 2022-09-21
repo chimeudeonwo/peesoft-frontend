@@ -5,7 +5,9 @@ import {useForm} from "react-hook-form";
 
 export const InputField = (props: InputProps) => {
 
-    const {register} = useForm();
+     const {register} = useForm();
+    //const register = props.register as FieldValues;
+    // const isError = props.errors && props.errors[props.name as string];
 
     return (
         <div className={"input-field-container"}>
