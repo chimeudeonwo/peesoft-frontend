@@ -1,19 +1,27 @@
 import React from "react";
 import './InputField.scss'
+import {InputProps} from "../../props/InputProps";
+import {useForm} from "react-hook-form";
 
-interface InputProps extends React.HTMLProps<HTMLInputElement> {
-    id: string,
-    name: string,
-    onchange: any,
-    placeholder: string,
-    maxLength : number
-}
 export const InputField = (props: InputProps) => {
+
+    const {register} = useForm();
+
     return (
-        <div className={"input-field-box"}>
-            <span className={"position-input-name-left input-name-font-size"}>{props.name}</span>
-            <input className={"format-input-element"} id={props.id} name={props.name} placeholder={props.placeholder}
-                   onChange={props.onchange}/>
+        <div className={"input-field-container"}>
+            <label>{props.placeholder}</label>
+            <div className={"input-field-wrapper"}>
+                <input className={"format-input-element"}
+                       id={props.id}
+                       placeholder={props.placeholder}
+                       type="text"
+                       {...register(props.name)}
+                       onChange={props.onChange}
+                       value={props.value}
+                       maxLength={props.maxLength}
+                       minLength={props.minLength}
+                />
+            </div>
         </div>
     )
 }

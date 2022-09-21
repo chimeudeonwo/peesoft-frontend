@@ -46,36 +46,23 @@ a:hover {
   height: 70px;
 }
 
-.user-register-content {
-  position: relative;
-  top: 50px;
-  text-align: center;
+.user-register-container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 
 .user-register-buttons-box {
-  position: relative;
-  top: 10px;
-  text-align: center;
-  margin-top: 10px;
+  display: inline-flex;
+  align-items: start;
 }
 
 .register-button-submit {
-  position: relative;
-  right: -220px;
+  margin-left: 307px;
 }
 
-.register-button-back {
-  position: relative;
-  right: 220px;
-}
-
-.user-register-buttons-box .register-button-back {
-  top: -50px;
-  background-color: #b8bab8;
-}
-
-.center-tip {
-  margin-top: 30px;
+.style-forgot-password {
+  margin-top: 37px;
   font-size: 20px;
   margin-left: -450px;
   text-align: center;

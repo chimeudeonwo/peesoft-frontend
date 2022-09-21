@@ -21,6 +21,7 @@ import {UserRegister} from "./modules/userRegister/UserRegister";
 import {UserLogin} from "./modules/userLogin/UserLogin";
 import Home from "./pages/home/Home";
 import PeeSoftApp from "./PeeSoftApp";
+import {InterestRate} from "./modules/interestRate/InterestRate";
 
 export default function App() {
     return (
@@ -32,6 +33,7 @@ export default function App() {
                     <Route path="register" element={<UserRegister />} />
                     <Route path="login" element={<UserLogin />} />
                     <Route path="services" element={<Home />} />
+                    <Route path="interest-rate" element={<InterestRate />} />
                     <Route path="*" element={<NoPage />} />
                 </Route>
             </Routes>

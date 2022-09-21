@@ -27,6 +27,7 @@ function PeeSoftApp() {
               <Header onClick={handlePageNavigation} />
               <span className={"register-login"}>
                   <a href={"/register"} onClick={() => setCurrentPage('user-registration')}>Register</a> | <a href={"/login"}>Login</a>
+                  | <a href={"/interest-rate"} onClick={() => setCurrentPage('interest-rate')}>Calculate Interest Rate</a>
               </span>
           </div>
       </header>
@@ -60,6 +61,10 @@ function PeeSoftApp() {
           }
           {currentPage === "user-registration" &&
               <Link to={"register"} />
+          }
+
+          {currentPage === "interest-rate" &&
+              <Link to={"interest-rate"} />
           }
       </div>
     </div>
