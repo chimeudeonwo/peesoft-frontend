@@ -15,7 +15,7 @@ export interface UserData {
 }
 
 export const UserRegister = () => {
-    const {register, trigger, formState: { errors, isValid}} = useForm({mode: 'onChange' });
+    const {register, trigger, formState: { errors, isValid}} = useForm({mode: 'all' });
     const [isUserDataChecked, setIsUserDataChecked] = useState(false);
     const [userRegisterData, setUserRegisterData] = useState({} as UserData);
 
@@ -83,7 +83,7 @@ export const UserRegister = () => {
                                 defaultValue={userRegisterData.email} id={"email"} name={"Email"} type={"email"}
                                 maxLength={50} onChange={handleUserDataForm} placeholder={"Email*"} required={"Email is Required"}
                                 pattern={{
-                                    value: /^[a-zA-Z0-9-.@]$/,
+                                    value: /^[a-zA-Z0-9-.a-zA-Z@a-zA-Z.a-zA-Z]$/,
                                     message: "Email is required"
                                 }}
                                 errors={errors}/>

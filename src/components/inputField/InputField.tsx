@@ -1,13 +1,14 @@
 import React, {useState} from "react";
 import './InputField.scss'
 import {InputProps} from "../../props/InputProps";
-import {useForm} from "react-hook-form";
+import {FieldValues, useForm, UseFormRegister} from "react-hook-form";
 
 export const InputField = (props: InputProps) => {
     const [touched, setTouched] = useState(false);
-     const {register} = useForm();
-    //const register = props.register as FieldValues;
-    // const isError = props.errors && props.errors[props.name as string];
+    // const {register} = useForm();
+    const register = props.register as UseFormRegister<FieldValues>;
+    const error = props.errors && props.errors[props.name as string];
+    // const isRequired = error.type === "required" ? "" : "";
 
     const markTouched = () => {
         setTouched(true)
@@ -17,7 +18,7 @@ export const InputField = (props: InputProps) => {
         <div className={"input-field-container"}>
             <label>{props.placeholder}</label>
             <div className={"input-field-wrapper"}>
-                <input className={"format-input-element"}
+                <input className={"format-input"}
                        id={props.id}
                        placeholder={props.placeholder}
                        type={props.type}
@@ -40,7 +41,7 @@ export const InputField = (props: InputProps) => {
                        autoFocus={props.autoFocus}
                 />
                 {
-                    touched && <span style={{color: "red"}}>{props.required as string}</span>
+                    (error || touched) && <span style={{color: "red"}}>{props.required as string}</span>
                 }
             </div>
         </div>
