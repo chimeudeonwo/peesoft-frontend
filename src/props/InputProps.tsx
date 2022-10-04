@@ -1,14 +1,22 @@
 import React from "react";
-import {FieldErrors, FieldValues, UseFormRegister} from "react-hook-form";
+import {FieldErrors, FieldValues, Message, UseFormRegister, ValidationRule} from "react-hook-form";
 
-export interface InputProps extends React.HTMLProps<HTMLInputElement> {
+export interface InputProps {
     id: string,
     name: string,
+    defaultValue: string,
+    type?: string,
+    autoFocus?: boolean,
+    disabled?: boolean,
     onChange: any,
     register?: UseFormRegister<FieldValues>
-    require?: boolean | string,
+    required?: Message | ValidationRule<boolean>,
+    pattern?: ValidationRule<RegExp>,
     placeholder?: string,
+    minLength? : number,
     maxLength? : number,
+    min?: ValidationRule<number | string>,
+    max?: ValidationRule<number | string>,
     label?: string,
     errors?: FieldErrors,
 }

@@ -15,14 +15,14 @@ export interface UserData {
 }
 
 export const UserRegister = () => {
-    const {register, trigger, formState: { errors, isValid}} = useForm({mode: 'onBlur' });
+    const {register, trigger, formState: { errors, isValid}} = useForm({mode: 'onChange' });
     const [isUserDataChecked, setIsUserDataChecked] = useState(false);
     const [userRegisterData, setUserRegisterData] = useState({} as UserData);
 
-    const onSubmit = async (evt:any) => {
-        trigger().then(() => {});
-
+    const onSubmit = async () => {
+        await trigger();
         console.log(' userRegisterData: ' + JSON.stringify(userRegisterData) + ' sent to backend');
+        console.log(' isValid: ' + isValid);
     };
 
     // Go to home page
@@ -51,8 +51,6 @@ export const UserRegister = () => {
     }
 
     const handleUserDataForm = (evt: any) => {
-        console.log('handleUserDataForm called')
-
         const target = evt.target;
         const value = target.value;
         const userData = {...userRegisterData}
@@ -72,9 +70,6 @@ export const UserRegister = () => {
         setUserRegisterData(userData);
     }
 
-    console.log('isUserDataChecked', isUserDataChecked);
-    console.log('isValid', isValid);
-
     return (
         <div>
             <header className={"user-register-header-section"}>
@@ -84,17 +79,25 @@ export const UserRegister = () => {
             </header>
             <div className={"user-register-container"}>
                 <div>
-                    <InputField register={register} value={userRegisterData.email} id={"email"} name={"Email"} type={"email"} maxLength={50} onChange={handleUserDataForm} placeholder={"Email*"} required={true} errors={errors}/>
-                    <InputField register={register} id={"username"} name={"Username"} type={"username"} maxLength={50} onChange={handleUserDataForm} placeholder={"Username*"} required={true} value={userRegisterData.username}/>
-                    <InputField register={register} id={"password"} name={"Password"} type={"password"} maxLength={50} onChange={handleUserDataForm} placeholder={"Password*"} required={true} value={userRegisterData.password}/>
-                    <InputField register={register} id={"confirmPassword"} name={"ConfirmPassword"} type={"password"} maxLength={50} onChange={handleUserDataForm} placeholder={"ConfirmPassword*"}required={true} value={userRegisterData.confirmPassword} />
+                    <InputField register={register}
+                                defaultValue={userRegisterData.email} id={"email"} name={"Email"} type={"email"}
+                                maxLength={50} onChange={handleUserDataForm} placeholder={"Email*"} required={"Email is Required"}
+                                pattern={{
+                                    value: /^[a-zA-Z0-9-.@]$/,
+                                    message: "Email is required"
+                                }}
+                                errors={errors}/>
+
+                    <InputField register={register} id={"username"} name={"Username"} type={"username"} maxLength={50} onChange={handleUserDataForm} placeholder={"Username*"} required={true} defaultValue={userRegisterData.username}/>
+                    <InputField register={register} id={"password"} name={"Password"} type={"password"} maxLength={50} onChange={handleUserDataForm} placeholder={"Password*"} required={true} defaultValue={userRegisterData.password}/>
+                    <InputField register={register} id={"confirmPassword"} name={"ConfirmPassword"} type={"password"} maxLength={50} onChange={handleUserDataForm} placeholder={"ConfirmPassword*"} required={true} defaultValue={userRegisterData.confirmPassword} />
                     <CheckBox id={"user-data-policy"} name={"user-data-policy"} checked={isUserDataChecked} onChange={handleUserDataCheckBox}
                               label={"I have read and agreed to the user data protection of PeeSoft"} />
-                    <p style={{color: "red"}}>* are required fields.</p>
+                    <p><b>* <span style={{color: "red"}}>are required fields.</span></b></p>
                 </div>
                 <div className={"user-register-buttons-box"}>
-                    <Button id={"register-button-back"} onClick={goBackToHome} buttonName={"Back"} disabled={false} active={false}/>
-                    <Button className={"register-button-submit"} id={"register-button"} onClick={onSubmit} type={"submit"} buttonName={"Register"} disabled={isActive()} active={isActive()}/>
+                    <Button id={"register-button-back"} name={"register-button-back"} onClick={goBackToHome} buttonName={"Back"} disabled={false} active={false}/>
+                    <Button className={"register-button-submit"} id={"register-button"} name={"register-button"} onClick={onSubmit} buttonName={"Register"} disabled={!isActive()} active={isActive()}/>
                 </div>
             </div>
 

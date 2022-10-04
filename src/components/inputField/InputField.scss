@@ -9,7 +9,10 @@
 }
 
 .input-field-wrapper {
+  display: flex;
+  flex-flow: column;
   padding: 5px 0 0 5px;
+  margin-bottom: 20px;
 }
 
 .format-input-element {
@@ -18,8 +21,7 @@
   line-height: 8px;
   border-radius: 5px;
   background-color: #faf7f7;
-  /*margin-left: -40px;*/
-  margin-bottom: 25px;
+  margin-bottom: 5px;
 }
 
 .input-name-font-size {

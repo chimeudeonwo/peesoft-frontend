@@ -54,7 +54,8 @@ a:hover {
 
 .user-register-buttons-box {
   display: inline-flex;
-  align-items: start;
+  align-items: flex-start;
+  padding-top: 20px;
 }
 
 .register-button-submit {
