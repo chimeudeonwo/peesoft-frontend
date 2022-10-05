@@ -93,7 +93,7 @@ export const UserRegister = () => {
                                 maxLength={50} onChange={handleUserDataForm} placeholder={"Email*"} required={"Email is Required"}
                                 pattern={{
                                     value: /.*[a-z]{5,}$/,
-                                    message: "Min. 5 characters are required and, [+?/%§$] symbols are not allowed."
+                                    message: "Min. 5 characters are require. Also, these [+?/%§$] symbols are not allowed."
                                 }}
                                 minLength={5}
                                 errors={errors}/>
@@ -103,7 +103,7 @@ export const UserRegister = () => {
                                 defaultValue={userRegisterData.username} errors={errors}
                                 pattern={{
                                     value: /.*[a-z]{5,}$/,
-                                    message: "Min. 5 characters are required and, [+?/%§$] symbols are not allowed."
+                                    message: "Min. 5 characters are required. Also, these [+?/%§$] symbols are not allowed."
                                 }}
                                 minLength={5}
                     />
@@ -113,7 +113,7 @@ export const UserRegister = () => {
                                 defaultValue={userRegisterData.password} errors={errors}
                                 pattern={{
                                     value: /.*[a-z]{8,}$/,
-                                    message: "Min. 8 characters are required and, [+?/%§$] symbols are not allowed."
+                                    message: "Min. 8 characters are required, Also, these [+?/%§$] symbols are not allowed."
                                 }}
                                 minLength={8}
                     />
@@ -123,7 +123,7 @@ export const UserRegister = () => {
                                 required={"ConfirmPassword is Required"} defaultValue={userRegisterData.confirmPassword} errors={errors}
                                 pattern={{
                                     value: /.*[a-z]{8,}$/,
-                                    message: "Min. 8 characters are required and, [+?/%§$] symbols are not allowed."
+                                    message: "Min. 8 characters are required. Also, these [+?/%§$] symbols are not allowed."
                                 }}
                                 minLength={8}
                     />
