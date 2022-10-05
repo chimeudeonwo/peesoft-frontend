@@ -1,14 +1,14 @@
 import React, {useState} from "react";
 import './InputField.scss'
 import {InputProps} from "../../props/InputProps";
-import {FieldValues, useForm, UseFormRegister} from "react-hook-form";
+import {FieldValues, UseFormRegister} from "react-hook-form";
 
 export const InputField = (props: InputProps) => {
     const [touched, setTouched] = useState(false);
     // const {register} = useForm();
     const register = props.register as UseFormRegister<FieldValues>;
     const error = props.errors && props.errors[props.name as string];
-    // const isRequired = error.type === "required" ? "" : "";
+    console.log('error', error?.type)
 
     const markTouched = () => {
         setTouched(true)
@@ -41,7 +41,7 @@ export const InputField = (props: InputProps) => {
                        autoFocus={props.autoFocus}
                 />
                 {
-                    (error || touched) && <span style={{color: "red"}}>{props.required as string}</span>
+                    error?.message && <span style={{color: "red"}}>{error.message as unknown as string}</span>
                 }
             </div>
         </div>

@@ -8,7 +8,7 @@ export const Button = (props: ButtonProps) => {
                     id={props.id}
                     name={props.name}
                     disabled={props.disabled}
-                    style={{backgroundColor: props.active ? '#23fc02': '#b8bab8'}}
+                    style={{backgroundColor: props.active ? '#e3011a': '#b8bab8'}}
                     onClick={props.onClick} >
                 <b>{props.buttonName}</b>
             </button>

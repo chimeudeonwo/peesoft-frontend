@@ -17,12 +17,12 @@ export interface UserData {
 export const UserRegister = () => {
     const {register, trigger, formState: { errors, isValid}} = useForm({mode: 'all' });
     const [isUserDataChecked, setIsUserDataChecked] = useState(false);
-    const [userRegisterData, setUserRegisterData] = useState({} as UserData);
+    const [userRegisterData, setUserRegisterData] = useState<UserData>({} as UserData);
 
     const onSubmit = async () => {
         await trigger();
         console.log(' userRegisterData: ' + JSON.stringify(userRegisterData) + ' sent to backend');
-        console.log(' isValid: ' + isValid);
+        console.log('af isValid: ' + isValid);
     };
 
     // Go to home page
@@ -59,6 +59,10 @@ export const UserRegister = () => {
             userData.email = value
         }
 
+        if(target.id === 'username'){
+            userData.username = value
+        }
+
         if(target.id === 'password'){
             userData.password = value
         }
@@ -71,7 +75,7 @@ export const UserRegister = () => {
     }
 
     return (
-        <div>
+        <div className={"user-register-container"}>
             <header className={"user-register-header-section"}>
                 <div className={"user-register-logo-section resize-user-register-logo"}>
                     <a href={"/"}><img src={Logo} alt={"user-register-logo"} className={"position-user-register-logo-name"}/>PeeSoft</a>
@@ -80,19 +84,43 @@ export const UserRegister = () => {
             <div className={"user-register-container"}>
                 <div>
                     <InputField register={register}
-                                defaultValue={userRegisterData.email} id={"email"} name={"Email"} type={"email"}
+                                defaultValue={userRegisterData.email} id={"email"} name={"email"} type={"email"}
                                 maxLength={50} onChange={handleUserDataForm} placeholder={"Email*"} required={"Email is Required"}
                                 pattern={{
-                                    value: /^[a-zA-Z0-9-.a-zA-Z@a-zA-Z.a-zA-Z]$/,
+                                    value: /.*[a-z]$/,
                                     message: "Email is required"
                                 }}
                                 errors={errors}/>
 
-                    <InputField register={register} id={"username"} name={"Username"} type={"username"} maxLength={50} onChange={handleUserDataForm} placeholder={"Username*"} required={true} defaultValue={userRegisterData.username}/>
-                    <InputField register={register} id={"password"} name={"Password"} type={"password"} maxLength={50} onChange={handleUserDataForm} placeholder={"Password*"} required={true} defaultValue={userRegisterData.password}/>
-                    <InputField register={register} id={"confirmPassword"} name={"ConfirmPassword"} type={"password"} maxLength={50} onChange={handleUserDataForm} placeholder={"ConfirmPassword*"} required={true} defaultValue={userRegisterData.confirmPassword} />
-                    <CheckBox id={"user-data-policy"} name={"user-data-policy"} checked={isUserDataChecked} onChange={handleUserDataCheckBox}
-                              label={"I have read and agreed to the user data protection of PeeSoft"} />
+                    <InputField register={register} id={"username"} name={"Username"} type={"username"} maxLength={50}
+                                onChange={handleUserDataForm} placeholder={"Username*"} required={true}
+                                defaultValue={userRegisterData.username} errors={errors}
+                                pattern={{
+                                    value: /.*[a-z]$/,
+                                    message: "Username is required"
+                                }}
+                    />
+
+                    <InputField register={register} id={"password"} name={"Password"} type={"password"} maxLength={50}
+                                onChange={handleUserDataForm} placeholder={"Password*"} required={true}
+                                defaultValue={userRegisterData.password} errors={errors}
+                                pattern={{
+                                    value: /.*[a-z]$/,
+                                    message: "Password is required"
+                                }}/>
+
+                    <InputField register={register} id={"confirmPassword"} name={"confirmPassword"} type={"password"}
+                                maxLength={50} onChange={handleUserDataForm} placeholder={"ConfirmPassword*"}
+                                required={true} defaultValue={userRegisterData.confirmPassword} errors={errors}
+                                pattern={{
+                                    value: /.*[a-z]$/,
+                                    message: "Confirm password is required"
+                                }}/>
+
+                    <CheckBox id={"user-data-policy"} name={"user-data-policy"} checked={isUserDataChecked}
+                              onChange={handleUserDataCheckBox}
+                              label={"I have read and agreed to the user data protection of PeeSoft"}
+                    />
                     <p><b>* <span style={{color: "red"}}>are required fields.</span></b></p>
                 </div>
                 <div className={"user-register-buttons-box"}>
@@ -100,6 +128,10 @@ export const UserRegister = () => {
                     <Button className={"register-button-submit"} id={"register-button"} name={"register-button"} onClick={onSubmit} buttonName={"Register"} disabled={!isActive()} active={isActive()}/>
                 </div>
             </div>
+
+            <footer>
+                <p>Footer</p>
+            </footer>
 
         </div>
     )
