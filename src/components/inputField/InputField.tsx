@@ -41,7 +41,7 @@ export const InputField = (props: InputProps) => {
                        autoFocus={props.autoFocus}
                 />
                 {
-                    error?.message && <span style={{color: "red"}}>{error.message as unknown as string}</span>
+                    error?.message && <span style={{color: "red"}}><b>{error.message as unknown as string}</b></span>
                 }
             </div>
         </div>

@@ -15,7 +15,7 @@ export interface UserData {
 }
 
 export const UserRegister = () => {
-    const {register, trigger, formState: { errors, isValid}} = useForm({mode: 'all' });
+    const {register, trigger, formState: { errors, isValid}} = useForm({mode: 'onBlur' });
     const [isUserDataChecked, setIsUserDataChecked] = useState(false);
     const [userRegisterData, setUserRegisterData] = useState<UserData>({} as UserData);
 
@@ -76,56 +76,71 @@ export const UserRegister = () => {
 
     return (
         <div className={"user-register-container"}>
+
             <header className={"user-register-header-section"}>
                 <div className={"user-register-logo-section resize-user-register-logo"}>
-                    <a href={"/"}><img src={Logo} alt={"user-register-logo"} className={"position-user-register-logo-name"}/>PeeSoft</a>
+                    <a href={"/"}>
+                        <img src={Logo} alt={"user-register-logo"} className={"position-user-register-logo-name"}/>
+                        PeeSoft
+                    </a>
                 </div>
             </header>
+
             <div className={"user-register-container"}>
                 <div>
                     <InputField register={register}
                                 defaultValue={userRegisterData.email} id={"email"} name={"email"} type={"email"}
                                 maxLength={50} onChange={handleUserDataForm} placeholder={"Email*"} required={"Email is Required"}
                                 pattern={{
-                                    value: /.*[a-z]$/,
-                                    message: "Email is required"
+                                    value: /.*[a-z]{5,}$/,
+                                    message: "Min. 5 characters are required and, [+?/%§$] symbols are not allowed."
                                 }}
+                                minLength={5}
                                 errors={errors}/>
 
                     <InputField register={register} id={"username"} name={"Username"} type={"username"} maxLength={50}
-                                onChange={handleUserDataForm} placeholder={"Username*"} required={true}
+                                onChange={handleUserDataForm} placeholder={"Username*"} required={"Username is Required"}
                                 defaultValue={userRegisterData.username} errors={errors}
                                 pattern={{
-                                    value: /.*[a-z]$/,
-                                    message: "Username is required"
+                                    value: /.*[a-z]{5,}$/,
+                                    message: "Min. 5 characters are required and, [+?/%§$] symbols are not allowed."
                                 }}
+                                minLength={5}
                     />
 
                     <InputField register={register} id={"password"} name={"Password"} type={"password"} maxLength={50}
-                                onChange={handleUserDataForm} placeholder={"Password*"} required={true}
+                                onChange={handleUserDataForm} placeholder={"Password*"} required={"Password is Required"}
                                 defaultValue={userRegisterData.password} errors={errors}
                                 pattern={{
-                                    value: /.*[a-z]$/,
-                                    message: "Password is required"
-                                }}/>
+                                    value: /.*[a-z]{8,}$/,
+                                    message: "Min. 8 characters are required and, [+?/%§$] symbols are not allowed."
+                                }}
+                                minLength={8}
+                    />
 
                     <InputField register={register} id={"confirmPassword"} name={"confirmPassword"} type={"password"}
                                 maxLength={50} onChange={handleUserDataForm} placeholder={"ConfirmPassword*"}
-                                required={true} defaultValue={userRegisterData.confirmPassword} errors={errors}
+                                required={"ConfirmPassword is Required"} defaultValue={userRegisterData.confirmPassword} errors={errors}
                                 pattern={{
-                                    value: /.*[a-z]$/,
-                                    message: "Confirm password is required"
-                                }}/>
-
-                    <CheckBox id={"user-data-policy"} name={"user-data-policy"} checked={isUserDataChecked}
-                              onChange={handleUserDataCheckBox}
-                              label={"I have read and agreed to the user data protection of PeeSoft"}
+                                    value: /.*[a-z]{8,}$/,
+                                    message: "Min. 8 characters are required and, [+?/%§$] symbols are not allowed."
+                                }}
+                                minLength={8}
                     />
+
+                    <div>
+                        <CheckBox id={"user-data-policy"} name={"user-data-policy"} checked={isUserDataChecked}
+                                  onChange={handleUserDataCheckBox}
+                                  label={"I have read and agreed to PeeSoft"}
+                        />
+                    </div>
                     <p><b>* <span style={{color: "red"}}>are required fields.</span></b></p>
                 </div>
                 <div className={"user-register-buttons-box"}>
-                    <Button id={"register-button-back"} name={"register-button-back"} onClick={goBackToHome} buttonName={"Back"} disabled={false} active={false}/>
-                    <Button className={"register-button-submit"} id={"register-button"} name={"register-button"} onClick={onSubmit} buttonName={"Register"} disabled={!isActive()} active={isActive()}/>
+                    <Button id={"register-button-back"} name={"register-button-back"} onClick={goBackToHome}
+                            buttonName={"Back"} disabled={false} active={false} />
+                    <Button className={"register-button-submit"} id={"register-button"} name={"register-button"}
+                            onClick={onSubmit} buttonName={"Register"} disabled={!isActive()} active={isActive()} />
                 </div>
             </div>
 
