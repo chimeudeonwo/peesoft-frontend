@@ -22,8 +22,10 @@ import {UserLogin} from "./modules/userLogin/UserLogin";
 import Home from "./pages/home/Home";
 import PeeSoftApp from "./PeeSoftApp";
 import {InterestRate} from "./modules/interestRate/InterestRate";
+import {InitI18n} from "./i18n";
 
 export default function App() {
+    InitI18n();
     return (
         <BrowserRouter>
             <Routes>

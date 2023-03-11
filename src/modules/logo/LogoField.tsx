@@ -1,11 +1,14 @@
-import {ImageProps} from "../../props/ImageProps";
 import "./LogoField.scss"
 
-export const LogoField = (props: ImageProps) => {
+interface LogoProps {
+    src: string
+}
+
+export const LogoField = (props: LogoProps) => {
     return (
-        <div className={props.className}>
-            <img src={props.src} onClick={props.onClick} alt={"Logo"}/>
-            <label className={"position-logo-name"}>{props.label}</label>
+        <div className={"format-logo-img"}>
+            <img src={props.src} onClick={() => window.location.href = '/'} alt={"Logo"}/>
+            <label className={"position-logo-name"} onClick={() => window.location.href = '/'}>{"PeeSoft"}</label>
         </div>
     )
 }

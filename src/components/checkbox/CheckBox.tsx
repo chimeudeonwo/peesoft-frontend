@@ -1,5 +1,4 @@
 import {CheckBoxProps} from "../../props/checkBoxProps";
-
 import './CheckBox.scss'
 import React from "react";
 export const CheckBox = (props: CheckBoxProps) => {

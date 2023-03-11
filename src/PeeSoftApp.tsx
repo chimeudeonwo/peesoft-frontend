@@ -3,8 +3,6 @@ import './PeeSoftApp.scss';
 import {AboutPeeSoft} from "./pages/aboutPeeSoft/AboutPeeSoft";
 import {ContactUs} from "./pages/contactUs/ContactUs";
 import {SitePages} from "./types/SitePages";
-import {LogoField} from "./modules/logo/LogoField";
-import Logo from "./../src/images/logo.png";
 import {Header} from "./modules/header/Header";
 import {Link} from "react-router-dom";
 
@@ -19,19 +17,9 @@ function PeeSoftApp() {
 
   return (
     <div className="peeSoft-app">
-      <header className={"header-section"}>
-          <div className={"logo-section"}>
-              <LogoField className={"format-logo-img"} label={"PeeSoft"} src={Logo} onClick={() => setCurrentPage('homePage')} />
-          </div>
-          <div className={"align-header-menu"}>
-              <Header onClick={handlePageNavigation} />
-              <span className={"register-login"}>
-                  <a href={"/register"} onClick={() => setCurrentPage('user-registration')}>Register</a> | <a href={"/login"}>Login</a>
-                  | <a href={"/interest-rate"} onClick={() => setCurrentPage('interest-rate')}>Calculate Interest Rate</a>
-              </span>
-          </div>
-      </header>
-      <div>
+        <Header onClick={handlePageNavigation} />
+
+        <div className={"content-wrapper"}>
           {currentPage === "homePage" &&
               <div className={"peeSoft-homePage"}>
                   <p>Welcome to PeeSoft where everyone is secured!</p>
@@ -49,22 +37,20 @@ function PeeSoftApp() {
           }
           {currentPage === "contactPage" &&
               <div className={"peeSoft-contactPage"}>
-                  <p>Contact us</p>
                   <ContactUs />
               </div>
           }
           {currentPage === "aboutPage" &&
               <div className={"peeSoft-aboutPage"}>
-                  <p>About PeeSoft</p>
                   <AboutPeeSoft />
               </div>
           }
-          {currentPage === "user-registration" &&
+          {currentPage === "userRegistrationPage" &&
               <Link to={"register"} />
           }
 
-          {currentPage === "interest-rate" &&
-              <Link to={"interest-rate"} />
+          {currentPage === "interestRatePage" &&
+              <Link to={"interestRatePage"} />
           }
       </div>
     </div>

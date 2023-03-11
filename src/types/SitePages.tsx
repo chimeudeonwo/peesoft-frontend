@@ -1,8 +1,2 @@
-export type SitePages =
-    'homePage'
-    | 'servicePage'
-    | 'careerPage'
-    | 'contactPage'
-    | 'aboutPage'
-    | 'user-registration'
-    | 'interest-rate'
+export type SitePages = 'homePage' | 'servicePage' | 'careerPage' | 'contactPage' | 'aboutPage' | 'userRegistrationPage'
+    | 'interestRatePage'
